@@ -1,33 +1,18 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
-import { Provider } from 'react-redux';
+import { mount } from 'enzyme';
 import { StaticRouter } from 'react-router';
-import { store } from 'redux/store';
 import ClusterContext from 'components/contexts/ClusterContext';
-import ListContainer from 'components/Schemas/List/ListContainer';
-import List, { ListProps } from 'components/Schemas/List/List';
+import List from 'components/Schemas/List/List';
 import { ThemeProvider } from 'styled-components';
 import theme from 'theme/theme';
 
 import { schemas } from './fixtures';
 
 describe('List', () => {
-  describe('Container', () => {
-    it('renders view', () => {
-      const component = shallow(
-        <Provider store={store}>
-          <ListContainer />
-        </Provider>
-      );
-
-      expect(component.exists()).toBeTruthy();
-    });
-  });
-
   describe('View', () => {
     const pathname = `/ui/clusters/clusterName/schemas`;
 
-    const setupWrapper = (props: Partial<ListProps> = {}) => (
+    const setupWrapper = (props = {}) => (
       <ThemeProvider theme={theme}>
         <StaticRouter location={{ pathname }} context={{}}>
           <List

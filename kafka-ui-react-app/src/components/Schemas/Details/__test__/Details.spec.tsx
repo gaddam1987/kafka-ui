@@ -4,8 +4,7 @@ import { mount } from 'enzyme';
 import { store } from 'redux/store';
 import { StaticRouter } from 'react-router';
 import ClusterContext from 'components/contexts/ClusterContext';
-import DetailsContainer from 'components/Schemas/Details/DetailsContainer';
-import Details, { DetailsProps } from 'components/Schemas/Details/Details';
+import Details from 'components/Schemas/Details/Details';
 import { ThemeProvider } from 'styled-components';
 import theme from 'theme/theme';
 
@@ -20,22 +19,6 @@ jest.mock(
 );
 
 describe('Details', () => {
-  describe('Container', () => {
-    it('renders view', () => {
-      const wrapper = mount(
-        <ThemeProvider theme={theme}>
-          <Provider store={store}>
-            <StaticRouter>
-              <DetailsContainer />
-            </StaticRouter>
-          </Provider>
-        </ThemeProvider>
-      );
-
-      expect(wrapper.exists(Details)).toBeTruthy();
-    });
-  });
-
   describe('View', () => {
     const setupWrapper = (props: Partial<DetailsProps> = {}) => (
       <ThemeProvider theme={theme}>
